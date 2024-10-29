@@ -2,7 +2,7 @@
 
 # Convert human-readable time to Unix timestamp
 TIMEOUT_READABLE=$(date -d '+7 days')
-timeout_unix=$(date -d $TIMEOUT_READABLE +%s)
+timeout_unix=$(date -d "$TIMEOUT_READABLE" +%s)
 
 # Public Ethereum JSON-RPC endpoint
 ETH_NODE_URL="https://rpc.ankr.com/eth"
@@ -18,10 +18,11 @@ while true; do
     # Check if current Ethereum timestamp has reached the timeout
     if (( current_timestamp >= timeout_unix )); then
         echo "Time release triggered!"
+	cat agent/mykey.hex
 	echo TWITTER_PASSWORD $TWITTER_PASSWORD
 	echo X_PASSWORD $X_PASSWORD
 	echo X_AUTH_TOKENS $X_AUTH_TOKENS
-	echo EMAIL_PASSWORD $EMAIL_PASSWORD
+	echo PROTONMAIL_PASSWORD $PROTONMAIL_PASSWORD
         break
     else
         echo "Not yet. Waiting until $TIMEOUT_READABLE (Current Ethereum time: $(date -d @$current_timestamp))"

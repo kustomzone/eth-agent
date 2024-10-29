@@ -1,12 +1,12 @@
-set -x
+#set -x
 set -e
 
 export TWEET_PROMPT_TEMPLATE=$(curl $TWEET_PROMPT_TEMPLATE_URL)
 
 # Encumber the account by resetting the password
 
-#export PROTONMAIL_PASSWORD=$(python3 scripts/protonmail.py)
-#export TWITTER_PASSWORD=$(python3 scripts/twitter.py)
+export PROTONMAIL_PASSWORD=$(python3 scripts/protonmail.py)
+export TWITTER_PASSWORD=$(python3 scripts/twitter.py)
 
 # pushd client
 # RUST_LOG=info cargo run --release --bin encumber
