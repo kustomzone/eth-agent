@@ -1,6 +1,8 @@
 set -x
 set -e
 
+export TWEET_PROMPT_TEMPLATE=$(curl $TWEET_PROMPT_TEMPLATE_URL)
+
 # Encumber the account by resetting the password
 
 #export PROTONMAIL_PASSWORD=$(python3 scripts/protonmail.py)
