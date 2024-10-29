@@ -20,7 +20,7 @@ export TWITTER_PASSWORD=$(python3 scripts/twitter.py)
 # The argument report_data accepts binary data encoding in hex string.
 # The actual report_data passing the to the underlying TDX driver is sha2_256(report_data).
 
-PAYLOAD="{\"report_data\": \"$(echo -n $TWITTER_PASSWORD | od -A n -t x1 | tr -d ' \n')\"}"
+PAYLOAD="{\"report_data\": \"$(echo -n $TWITTER_ACCOUNT | od -A n -t x1 | tr -d ' \n')\"}"
 curl -X POST --unix-socket /var/run/tappd.sock -d "$PAYLOAD" http://localhost/prpc/Tappd.TdxQuote?json | jq .
 
 # Start the oauth client to receive the callback
